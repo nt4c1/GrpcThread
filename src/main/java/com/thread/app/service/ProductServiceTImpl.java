@@ -107,45 +107,4 @@ public class ProductServiceTImpl implements ProductService{
                 .toList();
 
     }
-
-    @Override
-    public List<ProductDTO> updateStocksBatch(Map<Long, Integer> stockMap) {
-        if(stockMap == null || stockMap.isEmpty()) {
-            return List.of();
-        }
-
-        List<CompletableFuture<ProductDTO>> futures = stockMap.entrySet().stream()
-                .map(entry -> CompletableFuture.supplyAsync(()->
-                        updateStock(entry.getKey(), entry.getValue()), executorService)).toList();
-
-        return futures.stream()
-                .map(CompletableFuture::join)
-                .toList();
-    }
-
-    @Override
-    public void deleteProductsBatch(List<Long> ids) {
-        if(ids == null || ids.isEmpty()) {
-            return;
-        }
-
-        List<CompletableFuture<Void>> futures = ids.stream()
-                .map(id -> CompletableFuture.runAsync(()->
-                        deleteProductById(id),executorService)).toList();
-
-        futures.forEach(CompletableFuture::join);
-    }
-
-    @Override
-    public void shutdown() {
-            executorService.shutdown();
-            try {
-                if(!executorService.awaitTermination(10, TimeUnit.SECONDS)){
-                    executorService.shutdownNow();
-                }
-            } catch (InterruptedException e) {
-                executorService.shutdownNow();
-                throw new RuntimeException(e);
-            }
-    }
 }

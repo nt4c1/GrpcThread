@@ -7,7 +7,6 @@ import java.util.Map;
 
 public interface ProductService {
 
-    // -------- SINGLE OPERATIONS --------
     ProductDTO createProduct(ProductDTO productDTO);
 
     ProductDTO getProductById(Long id);
@@ -22,12 +21,6 @@ public interface ProductService {
 
     List<ProductDTO> createProductsBatch(List<ProductDTO> productDTOs);
 
-    List<ProductDTO> updateStocksBatch(Map<Long, Integer> stockMap);
-    
-
-    void deleteProductsBatch(List<Long> ids);
-
-    void shutdown();
 
     Object updateStockByName(String name, int stock);
 }
