@@ -26,3 +26,12 @@
 - [Micronaut Serialization Jackson Core documentation](https://micronaut-projects.github.io/micronaut-serialization/latest/guide/)
 
 
+To Run this go to the root and run this cli command:
+gradle clean build 
+
+To make a Jar File : .\gradlew assemble 
+To Run from Jar File  locate the Jar file located at build/libs
+The Jar file to run is of the form ...-0.1-all.jar
+Now run this command: java -jar <FileName.jar>
+
+Happy Coding 😊😊🔥🔥😂😂🎆![img.png](img.png)
