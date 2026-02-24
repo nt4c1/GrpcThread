@@ -1,0 +1,79 @@
+/*
+syntax = "proto3";
+
+import 'google/protobuf/empty.proto';
+
+option java_multiple_files = true;
+option java_package = "com.thread.app.proto";
+option java_outer_classname = "InventoryProto";
+
+service InventoryService {
+
+  rpc CreateProduct (CreateProductRequest) returns (ProductResponse);
+  rpc CreateProducts (CreateProductsRequest) returns (CreateProductsResponse);
+  rpc GetProductId (GetProductRequest) returns (ProductResponse);
+  rpc GetProductName (GetProductRequestName) returns (ProductResponse);
+  rpc UpdateStocks (UpdateStocksRequest) returns (UpdateStocksResponse);
+  rpc UpdateStock (UpdateStockRequest) returns (ProductResponse);
+  rpc UpdateProductName (UpdateProductNameRequest) returns (ProductResponse);
+  rpc DeleteProduct (DeleteProductRequest) returns (google.protobuf.Empty);
+  rpc ListProducts (ListProductsRequest) returns (ListProductsResponse);
+
+}
+
+message CreateProductRequest {
+  string name = 1;
+  string sku = 2;
+  double price = 3;
+  int32 stock = 4;
+}
+
+message GetProductRequest {
+  int64 id = 1;
+}
+message GetProductRequestName{
+  string name = 1;
+}
+
+message UpdateStockRequest {
+  int64 id = 1;
+  int32 stock = 2;
+}
+
+message UpdateProductNameRequest {
+  string name = 1;
+  int64 id = 3;
+}
+
+message DeleteProductRequest {
+  int64 id = 1;
+}
+
+message ListProductsRequest {
+}
+
+message ProductResponse {
+  int64 id = 1;
+  string name = 2;
+  string sku = 3;
+  double price = 4;
+  int32 stock = 5;
+}
+
+message ListProductsResponse {
+  repeated ProductResponse product = 1;
+}
+
+message CreateProductsRequest {
+  repeated CreateProductRequest products = 1;
+}
+message CreateProductsResponse {
+  repeated ProductResponse products = 1;
+}
+
+message UpdateStocksRequest {
+  repeated UpdateStockRequest products = 1;
+}
+message UpdateStocksResponse {
+  repeated UpdateStocksResponse products = 1;
+}*/

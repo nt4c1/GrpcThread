@@ -1,0 +1,90 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+option java_multiple_files = true;
+option java_package = "com.thread.app.protos";
+option java_outer_classname = "InventoriesProto";
+
+service InventoriesServices {
+
+  rpc CreateProducts (CreateProductsRequest) returns (CreateProductsResponse);
+  rpc GetProductsByIds (GetProductsByIdsRequest) returns (GetProductsResponse);
+  rpc GetProductsByNames (GetProductsByNamesRequest) returns (GetProductsResponse);
+  rpc UpdateStocks (UpdateStocksRequest) returns (UpdateStocksResponse);
+  rpc UpdateStocksByNames (UpdateStocksByNamesRequest) returns (UpdateStocksResponse);
+  rpc ListProducts (ListProductsRequest) returns (ListProductsResponse);
+  rpc DeleteProducts (DeleteProductsRequest) returns (google.protobuf.Empty);
+}
+
+message Product {
+  int64 id = 1;
+  string name = 2;
+  string sku = 3;
+  double price = 4;
+  int32 stock = 5;
+}
+
+
+message CreateProductRequest {
+  string name = 1;
+  string sku = 2;
+  double price = 3;
+  int32 stock = 4;
+}
+
+message CreateProductsRequest {
+  repeated CreateProductRequest products = 1;
+}
+
+message CreateProductsResponse {
+  repeated Product products = 1;
+}
+
+
+message GetProductsByIdsRequest {
+  repeated int64 ids = 1;
+}
+
+message GetProductsResponse {
+  repeated Product products = 1;
+}
+
+
+message GetProductsByNamesRequest {
+  repeated string names = 1;
+}
+
+message UpdateStockItem {
+  int64 id = 1;
+  int32 stock = 2;
+}
+
+message UpdateStockByNameItem{
+  string name = 1;
+  int32 stock = 2;
+}
+
+message UpdateStocksRequest {
+  repeated UpdateStockItem updates = 1;
+}
+
+message UpdateStocksByNamesRequest {
+  repeated UpdateStockByNameItem updates = 1;
+}
+
+message UpdateStocksResponse {
+  repeated Product products = 1;
+}
+
+
+message ListProductsRequest {}
+
+message ListProductsResponse {
+  repeated Product products = 1;
+}
+
+
+message DeleteProductsRequest {
+  repeated int64 ids = 1;
+}
