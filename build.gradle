@@ -39,6 +39,8 @@ dependencies {
     implementation("io.grpc:grpc-stub:1.79.0")
     implementation("io.micronaut.grpc:micronaut-grpc-runtime")
 
+    implementation("org.springframework.security:spring-security-crypto:6.2.0")
+    implementation("org.slf4j:jcl-over-slf4j")
 
 
 }

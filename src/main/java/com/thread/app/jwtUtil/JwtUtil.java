@@ -1,5 +1,6 @@
 package com.thread.app.jwtUtil;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.inject.Singleton;
@@ -26,5 +27,15 @@ public class JwtUtil {
                 .verifyWith(KEY)
                 .build().parseSignedClaims(token)
                 .getPayload();
+    }
+    public String validateAndExtract(String token) {
+
+        Claims claims = Jwts.parser()
+                .verifyWith(KEY)
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
+
+        return claims.getSubject();
     }
 }
